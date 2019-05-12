@@ -11,7 +11,9 @@ npm run test
 ```
 
 
-Then go to localhost:2000 and you can see the running demo.
+Then go to localhost:3005 and you can see the running demo.
+
+Now you can see some mockup json data in the URL: localhost:3005/homepage/get-users-posts
 
 Press Ctrl + C in terminal can stop the running demo
 
