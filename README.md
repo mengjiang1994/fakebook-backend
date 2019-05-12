@@ -1,10 +1,16 @@
 # fakebook-backend
 This is the backend repo of the Project Fakebook
 
-type the command below in terminal for running demo:
+Type the command below in terminal for running demo:
 ```
 npm run dev
 ```
+For run the test by Jest, just run:
+```
+npm run test
+```
+
+
 Then go to localhost:2000 and you can see the running demo.
 
 Press Ctrl + C in terminal can stop the running demo
