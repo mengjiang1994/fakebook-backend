@@ -1,5 +1,26 @@
 {
   "dependencies": {
-    "koa": "^2.7.0"
-  }
+    "koa": "^2.7.0",
+    "nodemon": "^1.19.0"
+  },
+  "name": "fakebook-backend",
+  "description": "This is the backend repo of the Project Fakebook",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mengjiang1994/fakebook-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mengjiang1994/fakebook-backend/issues"
+  },
+  "homepage": "https://github.com/mengjiang1994/fakebook-backend#readme"
 }
