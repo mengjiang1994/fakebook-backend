@@ -7,4 +7,6 @@ const main = ctx => {
 };
 
 app.use(main);
-app.listen(2000);
+
+//setting localhost listener as localhost:3005
+app.listen(3005);
