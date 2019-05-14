@@ -23,8 +23,10 @@ const router = new Router();
 require('./routes/basic')({ router });
 
 // tells the router to use all the routes that are on the object
-app.use(router.routes());
-app.use(router.allowedMethods());
+app
+   .use(require('koa-body')())
+   .use(router.allowedMethods())
+   .use(router.routes())
 
 // tell the server to listen to events on a specific port
 const server = app.listen(3005);
