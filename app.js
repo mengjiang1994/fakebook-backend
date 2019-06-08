@@ -31,6 +31,7 @@ app.use(cors({
       //     return "*"; // 允许来自所有域名请求
       // }
       // return 'http://localhost:8080';  // If the url is not /test, then only 8080 can get this cors.
+      // reference: https://www.jianshu.com/p/5b3acded5182
   },
   exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
   maxAge: 5,
