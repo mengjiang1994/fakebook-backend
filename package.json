@@ -1,6 +1,10 @@
 {
   "dependencies": {
     "koa": "^2.7.0",
+    "koa-body": "^4.1.0",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0",
+    "koa2-cors": "^2.0.6",
     "nodemon": "^1.19.0"
   },
   "name": "fakebook-backend",

@@ -2,6 +2,7 @@ const Koa = require('koa');
 const logger = require('koa-logger');
 const Router = require('koa-router');
 const app = new Koa();
+const cors = require('koa2-cors');
 
 // log all events to the terminal
 app.use(logger());
@@ -23,6 +24,20 @@ const router = new Router();
 require('./routes/basic')({ router });
 
 // tells the router to use all the routes that are on the object
+app.use(cors({
+  origin: function (ctx) {
+      return "*";
+      // if (ctx.url === '/test') {
+      //     return "*"; // 允许来自所有域名请求
+      // }
+      // return 'http://localhost:8080';  // If the url is not /test, then only 8080 can get this cors.
+  },
+  exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
+  maxAge: 5,
+  credentials: true,
+  allowMethods: ['GET', 'POST', 'DELETE'],
+  allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
+}))
 app
    .use(require('koa-body')())
    .use(router.allowedMethods())
