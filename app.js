@@ -25,6 +25,7 @@ require('./routes/basic')({ router });
 
 app.use(cors({
     origin: function (ctx) {
+      console.log("you are running the cors part from koa2-cors")
   //      if (ctx.url === '/user-post') {
             return "*"; 
   //      }
