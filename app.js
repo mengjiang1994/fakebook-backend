@@ -2,7 +2,7 @@ const Koa = require('koa');
 const logger = require('koa-logger');
 const Router = require('koa-router');
 const app = new Koa();
-const cors = require('koa2-cors');
+// const cors = require('cors');
 
 // log all events to the terminal
 app.use(logger());
@@ -23,22 +23,20 @@ const router = new Router();
 // require our external routes and pass in the router
 require('./routes/basic')({ router });
 
-// tells the router to use all the routes that are on the object
-app.use(cors({
-  origin: function (ctx) {
-      return "*";
-      // if (ctx.url === '/test') {
-      //     return "*"; // 允许来自所有域名请求
-      // }
-      // return 'http://localhost:8080';  // If the url is not /test, then only 8080 can get this cors.
-      // reference: https://www.jianshu.com/p/5b3acded5182
-  },
-  exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
-  maxAge: 5,
-  credentials: true,
-  allowMethods: ['GET', 'POST', 'DELETE'],
-  allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
-}))
+app.use('*',function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*'); //这个表示任意域名都可以访问，这样写不能携带cookie了。
+//res.header('Access-Control-Allow-Origin', 'http://www.baidu.com'); //这样写，只有www.baidu.com 可以访问。
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
+  res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');//设置方法
+  if (req.method == 'OPTIONS') {
+    res.send(200); // 意思是，在正常的请求之前，会发送一个验证，是否可以请求。
+  }
+  else {
+    next();
+  }
+});
+
+
 app
    .use(require('koa-body')())
    .use(router.allowedMethods())
